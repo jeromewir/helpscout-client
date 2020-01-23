@@ -17,6 +17,8 @@ jobs:
           node-version: "12.x"
           registry-url: "https://npm.pkg.github.com"
           scope: "jeromewir"
+          # https://github.com/actions/setup-node/issues/81#issuecomment-550459539
+          always-auth: true
       - run: yarn
       - run: yarn run build
       - run: yarn publish
