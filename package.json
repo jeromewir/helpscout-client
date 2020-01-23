@@ -6,6 +6,9 @@
   "author": "wirszt_j",
   "license": "MIT",
   "private": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc"
   },
