@@ -1,0 +1,26 @@
+name: Node CI
+
+on: [push]
+# on:
+#   release:
+#     # Only use the types keyword to narrow down the activity types that will trigger your workflow.
+#     types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+          registry-url: "https://registry.npmjs.org"
+          scope: "jeromewir"
+          # # https://github.com/actions/setup-node/issues/81#issuecomment-550459539
+          # always-auth: true
+      - run: yarn
+      - run: yarn run build
+      - run: yarn publish --no-git-tag-version --new-version 1.0.0 ##--new-version ${GITHUB_REF#"refs/tags/"} --no-git-tag-version
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
