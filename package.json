@@ -10,7 +10,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "axios": "^0.21.2"
+    "axios": "^1.6.0"
   },
   "devDependencies": {
     "typescript": "^3.7.5"
